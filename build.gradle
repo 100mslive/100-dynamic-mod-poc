@@ -20,7 +20,7 @@ buildscript {
 
     ext.versions = [
             'compileSdk'        : 31,
-            'minSdk'            : 16,
+            'minSdk'            : 21,
             'targetSdk'         : 31,
             'kotlin'            : '1.6.10',
             'playcore'          : '1.10.3',

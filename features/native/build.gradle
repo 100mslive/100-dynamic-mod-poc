@@ -40,5 +40,8 @@ android {
 
 dependencies {
     implementation project(':app')
+    def hmsVersion = "2.7.1"
+    implementation "live.100ms:android-sdk:$hmsVersion"    // Essential
+    implementation "live.100ms:video-view:$hmsVersion" // Essential
 }
 

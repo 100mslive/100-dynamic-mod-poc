@@ -75,6 +75,7 @@ class MainActivity : AppCompatActivity() {
     private val moduleNative by lazy { getString(R.string.module_native) }
     private val moduleAssets by lazy { getString(R.string.module_assets) }
 
+    // app/build/outputs/bundle/debug/app-debug.aab
     private val clickListener by lazy {
         View.OnClickListener {
             when (it.id) {
@@ -125,6 +126,7 @@ class MainActivity : AppCompatActivity() {
         updateProgressMessage("Loading module $name")
         // Skip loading if the module already is installed. Perform success action directly.
         if (manager.installedModules.contains(name)) {
+            Toast.makeText(this, "$name already installed", Toast.LENGTH_LONG).show()
             updateProgressMessage("Already installed")
             onSuccessfulLoad(name, launch = true)
             return
@@ -234,6 +236,7 @@ class MainActivity : AppCompatActivity() {
     private fun displayLoadingState(state: SplitInstallSessionState, message: String) {
         displayProgress()
 
+        Toast.makeText(this@MainActivity, "downloading ${state} ${message}", Toast.LENGTH_LONG).show()
         progressBar.max = state.totalBytesToDownload().toInt()
         progressBar.progress = state.bytesDownloaded().toInt()
 
